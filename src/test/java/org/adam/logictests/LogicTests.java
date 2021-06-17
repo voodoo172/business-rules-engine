@@ -1,6 +1,7 @@
 package org.adam.logictests;
 
 import org.adam.outputs.Output;
+import org.adam.outputs.impl.Email;
 import org.adam.outputs.impl.MembershipActivation;
 import org.adam.outputs.impl.MembershipUpgrade;
 import org.adam.outputs.impl.PackingSlip;
@@ -60,6 +61,9 @@ public class LogicTests {
 
     @Test
     public void membershipPaymentGeneratesCustomerEmail() {
+        final StandardMembership standardMembership = new StandardMembership(1234L, new BigDecimal("100"));
+        final List<Output> outputs = ruleProcessor.processPaymentForProduct(standardMembership);
+        assertTrue(outputs.stream().anyMatch(object -> object instanceof Email));
     }
 
     @Test
