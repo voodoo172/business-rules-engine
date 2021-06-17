@@ -1,9 +1,12 @@
 package org.adam.product.physical.impl;
 
 import org.adam.product.AbstractProduct;
+import org.adam.product.ProductType;
 import org.adam.product.physical.Book;
 
 import java.math.BigDecimal;
+
+import static org.adam.product.ProductType.BOOK;
 
 public class BookImpl extends AbstractProduct implements Book {
 
@@ -24,6 +27,16 @@ public class BookImpl extends AbstractProduct implements Book {
     @Override
     public BigDecimal getCost() {
         return cost;
+    }
+
+    @Override
+    public ProductType getProductType() {
+        return BOOK;
+    }
+
+    @Override
+    public boolean isPhysical() {
+        return true;
     }
 
     @Override

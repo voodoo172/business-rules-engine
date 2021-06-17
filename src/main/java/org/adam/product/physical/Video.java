@@ -1,4 +1,6 @@
 package org.adam.product.physical;
 
-public interface Video {
+import org.adam.product.Product;
+
+public interface Video extends Product {
 }

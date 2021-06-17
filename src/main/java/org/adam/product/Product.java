@@ -6,4 +6,8 @@ public interface Product {
     Long getId();
 
     BigDecimal getCost();
+
+    ProductType getProductType();
+
+    boolean isPhysical();
 }

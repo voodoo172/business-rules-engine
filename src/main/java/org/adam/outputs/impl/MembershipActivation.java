@@ -1,22 +1,26 @@
 package org.adam.outputs.impl;
 
-import org.adam.product.NonPhysicalProduct;
-import org.adam.product.AbstractProduct;
+import org.adam.outputs.Output;
+import org.adam.outputs.OutputDestination;
 
 import java.math.BigDecimal;
 
-public class MembershipActivation extends AbstractProduct implements NonPhysicalProduct {
-    public MembershipActivation(final Long id, final BigDecimal cost) {
-        super(id, cost);
+public class MembershipActivation implements Output {
+    public MembershipActivation() {
     }
 
     @Override
-    public Long getId() {
-        return id;
+    public Long getProductId() {
+        return null;
     }
 
     @Override
-    public BigDecimal getCost() {
+    public OutputDestination getDestination() {
+        return null;
+    }
+
+    @Override
+    public BigDecimal getCommissionValue() {
         return null;
     }
 }

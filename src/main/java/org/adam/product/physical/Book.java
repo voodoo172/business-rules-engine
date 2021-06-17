@@ -1,8 +1,8 @@
 package org.adam.product.physical;
 
-import org.adam.product.PhysicalProduct;
+import org.adam.product.Product;
 
-public interface Book extends PhysicalProduct {
+public interface Book extends Product {
     String getTitle();
 
     String getAuthor();

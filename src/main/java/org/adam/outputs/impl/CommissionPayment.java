@@ -5,13 +5,16 @@ import org.adam.outputs.OutputDestination;
 
 import java.math.BigDecimal;
 
-public class PackingSlip implements Output {
+public class CommissionPayment implements Output {
+
     private final Long productId;
     private final OutputDestination destination;
+    private final BigDecimal commissionValue;
 
-    public PackingSlip(final Long productId, final OutputDestination destination) {
+    public CommissionPayment(Long productId, OutputDestination destination, BigDecimal commissionValue) {
         this.productId = productId;
         this.destination = destination;
+        this.commissionValue = commissionValue;
     }
 
     @Override
@@ -26,6 +29,6 @@ public class PackingSlip implements Output {
 
     @Override
     public BigDecimal getCommissionValue() {
-        return null;
+        return commissionValue;
     }
 }

@@ -1,12 +1,14 @@
 package org.adam.product.nonphysical;
 
 import org.adam.product.AbstractProduct;
-import org.adam.product.NonPhysicalProduct;
+import org.adam.product.Product;
+import org.adam.product.ProductType;
 
 import java.math.BigDecimal;
 
-public class StandardMembership extends AbstractProduct implements NonPhysicalProduct {
-    public StandardMembership(final Long id, final BigDecimal cost) {
+public class StandardMembership extends AbstractProduct implements Product {
+
+    public StandardMembership(Long id, BigDecimal cost) {
         super(id, cost);
     }
 
@@ -18,5 +20,15 @@ public class StandardMembership extends AbstractProduct implements NonPhysicalPr
     @Override
     public BigDecimal getCost() {
         return cost;
+    }
+
+    @Override
+    public ProductType getProductType() {
+        return ProductType.STANDARD_MEMBERSHIP;
+    }
+
+    @Override
+    public boolean isPhysical() {
+        return false;
     }
 }
