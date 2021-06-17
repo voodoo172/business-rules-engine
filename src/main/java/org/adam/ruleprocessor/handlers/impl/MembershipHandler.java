@@ -2,6 +2,7 @@ package org.adam.ruleprocessor.handlers.impl;
 
 import org.adam.outputs.Output;
 import org.adam.outputs.impl.MembershipActivation;
+import org.adam.outputs.impl.MembershipUpgrade;
 import org.adam.product.Product;
 import org.adam.product.ProductType;
 import org.adam.ruleprocessor.handlers.ProcessorComponent;
@@ -16,13 +17,25 @@ public class MembershipHandler implements ProcessorComponent {
     public List<Output> handleProduct(final Product product) {
         final boolean productIsCorrectType = checkProductIsCorrectType(product);
         if (productIsCorrectType) {
-            final MembershipActivation membershipActivation = new MembershipActivation();
-            return List.of(membershipActivation);
+            return switch (product.getProductType()) {
+                case STANDARD_MEMBERSHIP -> processMemberActivation(product);
+                case ADVANCED_MEMBERSHIP -> processMemberUpgrade(product);
+                default -> throw new UnsupportedOperationException("Unsupported Product");
+            };
         }
         return List.of();
     }
 
+    private List<Output> processMemberActivation(Product product) {
+        return List.of(new MembershipActivation());
+    }
+
+    private List<Output> processMemberUpgrade(Product product) {
+        return List.of(new MembershipUpgrade());
+    }
+
     private boolean checkProductIsCorrectType(final Product product) {
-        return product.getProductType() == ProductType.STANDARD_MEMBERSHIP && !product.isPhysical();
+        return (product.getProductType() == ProductType.STANDARD_MEMBERSHIP
+                || product.getProductType() == ProductType.ADVANCED_MEMBERSHIP) && !product.isPhysical();
     }
 }

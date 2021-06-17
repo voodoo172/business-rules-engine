@@ -24,7 +24,9 @@ public class RuleProcessorImpl implements RuleProcessor {
 
     private void initialiseHandlerMap() {
         handlerMap.put(ProductType.BOOK, new BookHandler());
-        handlerMap.put(ProductType.STANDARD_MEMBERSHIP, new MembershipHandler());
+        final MembershipHandler membershipHandler = new MembershipHandler();
+        handlerMap.put(ProductType.STANDARD_MEMBERSHIP, membershipHandler);
+        handlerMap.put(ProductType.ADVANCED_MEMBERSHIP, membershipHandler);
     }
 
     @Override
