@@ -1,6 +1,7 @@
 package org.adam.ruleprocessor.handlers.impl;
 
 import org.adam.outputs.Output;
+import org.adam.outputs.impl.Email;
 import org.adam.outputs.impl.MembershipActivation;
 import org.adam.outputs.impl.MembershipUpgrade;
 import org.adam.product.Product;
@@ -26,12 +27,16 @@ public class MembershipHandler implements ProcessorComponent {
         return List.of();
     }
 
-    private List<Output> processMemberActivation(Product product) {
-        return List.of(new MembershipActivation());
+    private List<Output> processMemberActivation(final Product product) {
+        return List.of(new MembershipActivation(), createEmail(product));
     }
 
-    private List<Output> processMemberUpgrade(Product product) {
+    private List<Output> processMemberUpgrade(final Product product) {
         return List.of(new MembershipUpgrade());
+    }
+
+    Email createEmail(final Product product) {
+        return new Email();
     }
 
     private boolean checkProductIsCorrectType(final Product product) {
