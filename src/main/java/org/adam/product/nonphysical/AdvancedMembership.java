@@ -1,14 +1,13 @@
 package org.adam.product.nonphysical;
 
-import org.adam.product.AbstractProduct;
 import org.adam.product.Product;
 import org.adam.product.ProductType;
 
 import java.math.BigDecimal;
 
-import static org.adam.product.ProductType.*;
+import static org.adam.product.ProductType.ADVANCED_MEMBERSHIP;
 
-public class AdvancedMembership extends AbstractProduct implements Product {
+public class AdvancedMembership extends StandardMembership implements Product {
 
     public AdvancedMembership(Long id, BigDecimal cost) {
         super(id, cost);

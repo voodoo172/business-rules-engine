@@ -2,7 +2,9 @@ package org.adam.logictests;
 
 import org.adam.outputs.Output;
 import org.adam.outputs.impl.MembershipActivation;
+import org.adam.outputs.impl.MembershipUpgrade;
 import org.adam.outputs.impl.PackingSlip;
+import org.adam.product.nonphysical.AdvancedMembership;
 import org.adam.product.nonphysical.StandardMembership;
 import org.adam.product.physical.Book;
 import org.adam.product.physical.impl.BookImpl;
@@ -51,6 +53,9 @@ public class LogicTests {
 
     @Test
     public void membershipUpgradeUpgradesMembership() {
+        final AdvancedMembership advancedMembership = new AdvancedMembership(456L, new BigDecimal("19.99"));
+        final List<Output> outputs = ruleProcessor.processPaymentForProduct(advancedMembership);
+        assertTrue(outputs.stream().anyMatch(object -> object instanceof MembershipUpgrade));
     }
 
     @Test
