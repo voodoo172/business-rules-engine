@@ -10,4 +10,6 @@ public interface Product {
     ProductType getProductType();
 
     boolean isPhysical();
+
+    String getTitle();
 }

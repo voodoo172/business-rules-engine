@@ -6,11 +6,11 @@ import org.adam.outputs.impl.MembershipActivation;
 import org.adam.outputs.impl.MembershipUpgrade;
 import org.adam.product.Product;
 import org.adam.product.ProductType;
-import org.adam.ruleprocessor.handlers.ProcessorComponent;
+import org.adam.ruleprocessor.handlers.ProductHandler;
 
 import java.util.List;
 
-public class MembershipHandler implements ProcessorComponent {
+public class MembershipHandler implements ProductHandler {
     public MembershipHandler() {
     }
 

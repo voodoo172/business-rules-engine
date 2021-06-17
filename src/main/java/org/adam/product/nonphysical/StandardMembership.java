@@ -31,4 +31,9 @@ public class StandardMembership extends AbstractProduct implements Product {
     public boolean isPhysical() {
         return false;
     }
+
+    @Override
+    public String getTitle() {
+        return null;
+    }
 }

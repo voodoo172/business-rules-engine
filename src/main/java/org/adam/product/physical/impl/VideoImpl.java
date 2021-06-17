@@ -7,8 +7,11 @@ import org.adam.product.physical.Video;
 import java.math.BigDecimal;
 
 public class VideoImpl extends AbstractProduct implements Video {
-    public VideoImpl(final Long id, final BigDecimal cost) {
+    private final String title;
+
+    public VideoImpl(final Long id, final String title, final BigDecimal cost) {
         super(id, cost);
+        this.title = title;
     }
 
     @Override
@@ -29,5 +32,10 @@ public class VideoImpl extends AbstractProduct implements Video {
     @Override
     public boolean isPhysical() {
         return true;
+    }
+
+    @Override
+    public String getTitle() {
+        return title;
     }
 }

@@ -5,6 +5,6 @@ import org.adam.product.Product;
 
 import java.util.List;
 
-public interface ProcessorComponent {
+public interface ProductHandler {
    List<Output> handleProduct(Product product);
 }

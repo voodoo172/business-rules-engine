@@ -8,7 +8,9 @@ import org.adam.outputs.impl.PackingSlip;
 import org.adam.product.nonphysical.AdvancedMembership;
 import org.adam.product.nonphysical.StandardMembership;
 import org.adam.product.physical.Book;
+import org.adam.product.physical.Video;
 import org.adam.product.physical.impl.BookImpl;
+import org.adam.product.physical.impl.VideoImpl;
 import org.adam.ruleprocessor.RuleProcessor;
 import org.adam.ruleprocessor.impl.RuleProcessorImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -75,6 +77,9 @@ public class LogicTests {
 
     @Test
     public void paymentForVideoGeneratesPackingSlipWithAdditionalVideo() {
+        final Video video = new VideoImpl(123456L, "Learning to Ski", new BigDecimal("9.99"));
+        final List<Output> outputs = ruleProcessor.processPaymentForProduct(video);
+        assertTrue(outputs.stream().anyMatch(object -> object instanceof PackingSlip && ((PackingSlip) object).getItems().contains("First Aid")));
     }
 
 

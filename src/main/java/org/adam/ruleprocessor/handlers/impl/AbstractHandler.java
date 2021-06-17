@@ -10,14 +10,21 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractProcessor {
+public abstract class AbstractHandler {
     List<Output> processPhysicalProduct(final Product product) {
         final ArrayList<Output> outputs = new ArrayList<>();
-        final PackingSlip packingSlip = new PackingSlip(product.getId(), OutputDestination.SHIPPING_DEPT);
+        final ArrayList<String> packingList = createPackingList(product);
+        final PackingSlip packingSlip = new PackingSlip(product.getId(), OutputDestination.SHIPPING_DEPT, packingList);
         outputs.add(packingSlip);
         final CommissionPayment commissionPayment = new CommissionPayment(product.getId(), OutputDestination.AGENT, getCommissionValue(product));
         outputs.add(commissionPayment);
         return outputs;
+    }
+
+    private ArrayList<String> createPackingList(Product product) {
+        final ArrayList<String> packingList = new ArrayList<>();
+        packingList.add(product.getTitle());
+        return packingList;
     }
 
     private BigDecimal getCommissionValue(final Product product) {

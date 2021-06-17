@@ -5,11 +5,11 @@ import org.adam.outputs.OutputDestination;
 import org.adam.outputs.impl.PackingSlip;
 import org.adam.product.Product;
 import org.adam.product.ProductType;
-import org.adam.ruleprocessor.handlers.ProcessorComponent;
+import org.adam.ruleprocessor.handlers.ProductHandler;
 
 import java.util.List;
 
-public class BookHandler extends AbstractProcessor implements ProcessorComponent {
+public class BookHandler extends AbstractHandler implements ProductHandler {
 
     public BookHandler() {
     }
@@ -27,7 +27,7 @@ public class BookHandler extends AbstractProcessor implements ProcessorComponent
     }
 
     private PackingSlip createPackingSlipForRoyaltyDept(final Product product) {
-        return new PackingSlip(product.getId(), OutputDestination.ROYALTY_DEPT);
+        return new PackingSlip(product.getId(), OutputDestination.ROYALTY_DEPT, List.of(product.getTitle()));
     }
 
     private boolean checkProductIsCorrectType(final Product product) {
