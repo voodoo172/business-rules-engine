@@ -68,6 +68,9 @@ public class LogicTests {
 
     @Test
     public void membershipUpgradeGeneratesCustomerEmail() {
+        final AdvancedMembership advancedMembership = new AdvancedMembership(1234L, new BigDecimal("100"));
+        final List<Output> outputs = ruleProcessor.processPaymentForProduct(advancedMembership);
+        assertTrue(outputs.stream().anyMatch(object -> object instanceof Email));
     }
 
     @Test
