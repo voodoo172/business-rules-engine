@@ -23,7 +23,7 @@ public class BookHandler extends AbstractProcessor implements ProcessorComponent
             outputs.add(packingSlipForRoyaltyDept);
             return outputs;
         }
-        return null;
+        return List.of();
     }
 
     private PackingSlip createPackingSlipForRoyaltyDept(final Product product) {

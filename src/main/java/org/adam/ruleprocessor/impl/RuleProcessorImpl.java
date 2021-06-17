@@ -6,6 +6,7 @@ import org.adam.product.ProductType;
 import org.adam.ruleprocessor.RuleProcessor;
 import org.adam.ruleprocessor.handlers.ProcessorComponent;
 import org.adam.ruleprocessor.handlers.impl.BookHandler;
+import org.adam.ruleprocessor.handlers.impl.MembershipHandler;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,7 @@ public class RuleProcessorImpl implements RuleProcessor {
 
     private void initialiseHandlerMap() {
         handlerMap.put(ProductType.BOOK, new BookHandler());
+        handlerMap.put(ProductType.STANDARD_MEMBERSHIP, new MembershipHandler());
     }
 
     @Override
