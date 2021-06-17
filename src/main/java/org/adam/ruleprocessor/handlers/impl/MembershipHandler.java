@@ -32,7 +32,7 @@ public class MembershipHandler implements ProcessorComponent {
     }
 
     private List<Output> processMemberUpgrade(final Product product) {
-        return List.of(new MembershipUpgrade());
+        return List.of(new MembershipUpgrade(), createEmail(product));
     }
 
     Email createEmail(final Product product) {
